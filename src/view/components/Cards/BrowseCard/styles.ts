@@ -1,11 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CardContainer = styled.div`
   width: 23.8125rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   overflow: hidden;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   img {
     height: 30rem;

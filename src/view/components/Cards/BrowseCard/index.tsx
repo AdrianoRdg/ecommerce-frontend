@@ -1,14 +1,18 @@
-import { CardContainer } from './styles';
+import { Link } from "react-router-dom";
+import { CardContainer } from "./styles";
 
-export function BrowseCard() {
+interface BrowseCardProps {
+  name: string;
+  imageLink: string;
+}
+
+export function BrowseCard({ name, imageLink }: BrowseCardProps) {
   return (
     <CardContainer>
-      <img
-        src="https://i.postimg.cc/Xq3x9mJq/sala.png"
-        alt=""
-        draggable="false"
-      />
-      <h3>category</h3>
+      <Link to={`category/${name.toLowerCase()}`}>
+        <img src={imageLink} alt={`${name} card`} draggable="false" />
+        <h3>{name}</h3>
+      </Link>
     </CardContainer>
   );
 }
