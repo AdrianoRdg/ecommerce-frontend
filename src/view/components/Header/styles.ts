@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   height: 6.25rem;
@@ -8,6 +8,7 @@ export const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 `;
 
 export const HeaderBrand = styled.div`
