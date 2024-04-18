@@ -4,7 +4,7 @@ export const CardsSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
+  padding: 3rem 0 3rem 0;
 `;
 
 export const CardsContainer = styled.div`

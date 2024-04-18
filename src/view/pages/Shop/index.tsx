@@ -1,3 +1,4 @@
+import { Benefits } from "../../components/Benefits";
 import { ProductCard } from "../../components/Cards/ProductCard";
 import { Header } from "../../components/Header";
 import { Filter } from "./sections/Filter";
@@ -21,6 +22,8 @@ export function Shop() {
           <ProductCard />
         </CardsContainer>
       </CardsSection>
+
+      <Benefits />
     </>
   );
 }
