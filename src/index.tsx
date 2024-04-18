@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import GlobalStyles from "./assets/styles/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
+import { Home } from "./view/pages/Home";
+import { Shop } from "./view/pages/Shop";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
+  },
+  {
+    path: "/shop",
+    element: <Shop />,
   },
   {
     path: "*",
@@ -20,6 +26,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <GlobalStyles />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

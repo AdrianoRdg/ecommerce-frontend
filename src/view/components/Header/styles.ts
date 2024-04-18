@@ -24,6 +24,11 @@ export const Navbar = styled.nav`
     gap: 4rem;
   }
 
+  li a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   li:hover {
     text-decoration: underline 2px;
     font-weight: 500;
