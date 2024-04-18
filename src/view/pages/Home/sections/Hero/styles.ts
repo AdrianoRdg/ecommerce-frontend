@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeroContainer = styled.section`
   position: relative;
-  height: 494.73px;
+  height: 30.9206rem;
 
   img {
     object-fit: cover;
@@ -16,8 +16,8 @@ export const HeroContent = styled.div`
   bottom: 0;
   right: 4rem;
   background-color: #fff3e3;
-  width: 643px;
-  height: 320px;
+  width: 40.1875rem;
+  height: 19rem;
   border-radius: 10px 0px 0px 0px;
 
   p {
