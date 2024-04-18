@@ -5,6 +5,7 @@ export const ProductCardContainer = styled.div`
   height: 27.875rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const ImageContainer = styled.div`
@@ -52,4 +53,18 @@ export const InfoPrice = styled.div`
     font-size: 16px;
     font-weight: 400;
   }
+`;
+
+export const CardLabel = styled.div<{ color?: string }>`
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: ${(props) => props.color};
+  border-radius: 50%;
 `;

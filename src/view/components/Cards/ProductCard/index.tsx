@@ -1,4 +1,5 @@
 import {
+  CardLabel,
   ImageContainer,
   InfoContainer,
   InfoPrice,
@@ -9,6 +10,8 @@ import {
 export function ProductCard() {
   return (
     <ProductCardContainer>
+      <CardLabel color="#e97171">10</CardLabel>
+
       <ImageContainer>
         <img src="https://i.postimg.cc/Qtc09hjv/mesa.png" alt="" />
       </ImageContainer>
