@@ -7,23 +7,43 @@ import {
   ProductCardContainer,
 } from "./styles";
 
-export function ProductCard() {
+interface ProductCardProps {
+  image: string;
+  name: string;
+  description: string;
+  price: number;
+  discountPrice: number;
+  discount: number;
+  isNew: boolean;
+}
+
+export function ProductCard({
+  image,
+  name,
+  description,
+  price,
+  discountPrice,
+}: ProductCardProps) {
+  function formatNumber(number: number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
   return (
     <ProductCardContainer>
       <CardLabel color="#e97171">10</CardLabel>
 
       <ImageContainer>
-        <img src="https://i.postimg.cc/Qtc09hjv/mesa.png" alt="" />
+        <img src={image} alt="" />
       </ImageContainer>
 
       <InfoContainer>
         <InfoTitle>
-          <h3>Syltherine</h3>
-          <p>Stylish cafe chair</p>
+          <h3>{name}</h3>
+          <p>{description}</p>
         </InfoTitle>
         <InfoPrice>
-          <p>Rp 2.500.000</p>
-          <p>Rp 3.500.000</p>
+          <p>{`Rp ${formatNumber(discountPrice)}`}</p>
+          <p>{`Rp ${formatNumber(price)}`}</p>
         </InfoPrice>
       </InfoContainer>
     </ProductCardContainer>
