@@ -21,8 +21,6 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoTitle = styled.div`
-  width: 8.625rem;
-
   h3 {
     font-size: 24px;
     font-weight: 600;
@@ -67,4 +65,15 @@ export const CardLabel = styled.div<{ color?: string }>`
   right: 1rem;
   background-color: ${(props) => props.color};
   border-radius: 50%;
+`;
+
+export const ProductCardHover = styled.div`
+  position: absolute;
+  background-color: #3a3a3a;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

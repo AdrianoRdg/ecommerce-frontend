@@ -15,7 +15,7 @@ interface Product {
   description: string;
   price: number;
   discountPrice: number;
-  discount: number;
+  discountPercent: number;
   isNew: boolean;
 }
 
@@ -54,7 +54,7 @@ export function Shop() {
                 description={card.description}
                 price={card.price}
                 discountPrice={card.discountPrice}
-                discount={card.discount}
+                discountPercent={card.discountPercent}
                 isNew={card.isNew}
               />
             ))}
