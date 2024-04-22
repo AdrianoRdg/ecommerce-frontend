@@ -1,23 +1,16 @@
 import { useState } from "react";
+import { CardHover } from "./CardHover";
 import {
   CardLabel,
-  HoverActions,
-  HoverButton,
-  HoverContent,
-  HoverIconContent,
   ImageContainer,
   InfoContainer,
   InfoPrice,
   InfoTitle,
   ProductCardContainer,
-  ProductCardHover,
 } from "./styles";
 
-import compare from "../../../../assets/images/productCard/compare.svg";
-import like from "../../../../assets/images/productCard/like.svg";
-import share from "../../../../assets/images/productCard/share.svg";
-
 interface ProductCardProps {
+  id: number;
   image: string;
   name: string;
   description: string;
@@ -28,6 +21,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
+  id,
   image,
   name,
   description,
@@ -37,7 +31,6 @@ export function ProductCard({
   isNew,
 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  console.log(isHovered);
 
   function formatNumber(number: number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -68,29 +61,7 @@ export function ProductCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {isHovered && (
-        <ProductCardHover>
-          <HoverContent>
-            <HoverButton>See Details</HoverButton>
-            <HoverActions>
-              <HoverIconContent>
-                <img src={share} alt="" />
-                <span>Share</span>
-              </HoverIconContent>
-
-              <HoverIconContent>
-                <img src={compare} alt="" />
-                <span>Compare</span>
-              </HoverIconContent>
-
-              <HoverIconContent>
-                <img src={like} alt="" />
-                <span>Like</span>
-              </HoverIconContent>
-            </HoverActions>
-          </HoverContent>
-        </ProductCardHover>
-      )}
+      {isHovered && <CardHover id={id} />}
 
       {cardLabelProps && (
         <CardLabel color={cardLabelProps.color}>

@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     element: <Shop />,
   },
   {
+    path: "/shop/:id",
+    element: <h1>Detail</h1>,
+  },
+  {
     path: "*",
     element: <h1>Page not found</h1>,
   },

@@ -49,6 +49,7 @@ export function Shop() {
             cards.map((card: Product) => (
               <ProductCard
                 key={card.id}
+                id={card.id}
                 image={card.imageLink}
                 name={card.name}
                 description={card.description}

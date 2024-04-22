@@ -83,16 +83,20 @@ export const HoverContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const HoverButton = styled.button`
   background-color: white;
+  width: 12.625rem;
+  height: 3rem;
+  border: none;
   color: #b88e2f;
-  width: 202px;
-  height: 48px;
   font-size: 16px;
   font-weight: 600;
-  border: none;
 
   &:hover {
     transition: all 0.2s;
