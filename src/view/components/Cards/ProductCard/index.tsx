@@ -37,17 +37,17 @@ export function ProductCard({
   }
 
   const getCardLabelProps = (isNew: boolean, discountPercent: number) => {
-    if (isNew) {
-      return {
-        color: "#2EC1AC",
-        label: "New",
-      };
-    }
-
     if (discountPercent !== 0) {
       return {
         color: "#e97171",
         label: `-${discountPercent}%`,
+      };
+    }
+
+    if (isNew) {
+      return {
+        color: "#2EC1AC",
+        label: "New",
       };
     }
 

@@ -22,7 +22,6 @@ interface Product {
 export function Shop() {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(cards);
 
   useEffect(() => {
     async function fetchData() {
