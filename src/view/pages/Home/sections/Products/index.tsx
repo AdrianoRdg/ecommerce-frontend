@@ -12,8 +12,13 @@ export function Products() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://localhost:3001/product");
-        setCards(response.data);
+        const response = await axios.get(
+          "http://localhost:3001/product?page=1&pageSize=8"
+        );
+
+        const { data } = response.data;
+
+        setCards(data);
         setLoading(false);
       } catch (error) {
         console.error("Erro ao fazer requisição:", error);
