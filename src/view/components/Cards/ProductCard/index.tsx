@@ -1,6 +1,10 @@
 import { useState } from "react";
 import {
   CardLabel,
+  HoverActions,
+  HoverButton,
+  HoverContent,
+  HoverIconContent,
   ImageContainer,
   InfoContainer,
   InfoPrice,
@@ -8,6 +12,10 @@ import {
   ProductCardContainer,
   ProductCardHover,
 } from "./styles";
+
+import compare from "../../../../assets/images/productCard/compare.svg";
+import like from "../../../../assets/images/productCard/like.svg";
+import share from "../../../../assets/images/productCard/share.svg";
 
 interface ProductCardProps {
   image: string;
@@ -62,9 +70,25 @@ export function ProductCard({
     >
       {isHovered && (
         <ProductCardHover>
-          <div>
-            <button>See Details</button>
-          </div>
+          <HoverContent>
+            <HoverButton>See Details</HoverButton>
+            <HoverActions>
+              <HoverIconContent>
+                <img src={share} alt="" />
+                <span>Share</span>
+              </HoverIconContent>
+
+              <HoverIconContent>
+                <img src={compare} alt="" />
+                <span>Compare</span>
+              </HoverIconContent>
+
+              <HoverIconContent>
+                <img src={like} alt="" />
+                <span>Like</span>
+              </HoverIconContent>
+            </HoverActions>
+          </HoverContent>
         </ProductCardHover>
       )}
 

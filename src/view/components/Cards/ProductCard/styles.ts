@@ -69,11 +69,51 @@ export const CardLabel = styled.div<{ color?: string }>`
 
 export const ProductCardHover = styled.div`
   position: absolute;
-  background-color: #3a3a3a;
+  z-index: 1;
+  background-color: rgba(58, 58, 58, 0.7);
   width: 100%;
   height: 100%;
-  opacity: 0.7;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const HoverContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+`;
+
+export const HoverButton = styled.button`
+  background-color: white;
+  color: #b88e2f;
+  width: 202px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+
+  &:hover {
+    transition: all 0.2s;
+    background-color: #b88e2f;
+    color: white;
+  }
+`;
+
+export const HoverActions = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const HoverIconContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
 `;
