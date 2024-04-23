@@ -15,7 +15,28 @@ import filter from "../../../../../assets/images/filter/filter.svg";
 import pipe from "../../../../../assets/images/filter/pipe.svg";
 import squares from "../../../../../assets/images/filter/squares.svg";
 
-export function Filter() {
+interface FilterProps {
+  filters: {
+    page: number;
+    pageSize: number;
+    shortBy: string;
+  };
+  setFilters: React.Dispatch<
+    React.SetStateAction<{
+      page: number;
+      pageSize: number;
+      shortBy: string;
+    }>
+  >;
+  metaData: {
+    page: number;
+    pageSize: number;
+    totalPages: number;
+    totalCount: number;
+  };
+}
+
+export function Filter({ metaData, filters, setFilters }: FilterProps) {
   return (
     <FilterSection className="container">
       <FilterContent>
@@ -31,19 +52,30 @@ export function Filter() {
           <Pipe>
             <img src={pipe} alt="pipe icon" />
           </Pipe>
-
-          <p>Showing 1-16 of 32 results</p>
+          <p>{`Showing ${metaData.page}-${metaData.pageSize} of ${metaData.totalCount} results`}</p>
         </FilterOptions>
 
         <FilterInputs>
           <FilterLabel htmlFor="show">
             Show
-            <ShowInput id="show" type="text" placeholder="16" />
+            <ShowInput
+              id="show"
+              type="text"
+              value={filters.pageSize.toString()}
+              onChange={(e) =>
+                setFilters({ ...filters, pageSize: Number(e.target.value) })
+              }
+              placeholder={filters.pageSize.toString()}
+            />
           </FilterLabel>
 
           <FilterLabel htmlFor="shortBy">
             Short by
-            <ShortByInput id="shortBy" type="text" placeholder="Default" />
+            <ShortByInput
+              id="shortBy"
+              type="text"
+              placeholder={filters.shortBy}
+            />
           </FilterLabel>
         </FilterInputs>
       </FilterContent>
