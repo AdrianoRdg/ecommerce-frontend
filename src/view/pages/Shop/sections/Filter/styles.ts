@@ -48,22 +48,19 @@ export const FilterLabel = styled.label`
   font-weight: 400;
 `;
 
-const StyledInput = styled.input`
+export const StyledSelect = styled.select`
   height: 3.4375rem;
   border: none;
   font-size: 20px;
-  padding-left: 1rem;
-
-  &::placeholder {
-    padding-left: 0.1rem;
-    color: #9f9f9f;
-  }
+  background-color: white;
+  color: #9f9f9f;
+  padding-left: 0.5rem;
 `;
 
-export const ShowInput = styled(StyledInput)`
-  width: 2.5rem;
+export const ShowSelect = styled(StyledSelect)`
+  width: 3.5rem;
 `;
 
-export const ShortByInput = styled(StyledInput)`
+export const ShortBySelect = styled(StyledSelect)`
   width: 11rem;
 `;
