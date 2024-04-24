@@ -6,10 +6,11 @@ import {
   FilterSection,
   Filters,
   Pipe,
-  ShortByInput,
-  ShowInput,
+  ShortBySelect,
+  ShowSelect,
 } from "./styles";
 
+import { ChangeEvent, useState } from "react";
 import dots from "../../../../../assets/images/filter/dots.svg";
 import filter from "../../../../../assets/images/filter/filter.svg";
 import pipe from "../../../../../assets/images/filter/pipe.svg";
@@ -18,13 +19,13 @@ import squares from "../../../../../assets/images/filter/squares.svg";
 interface FilterProps {
   filters: {
     page: number;
-    pageSize: number;
+    show: number;
     shortBy: string;
   };
   setFilters: React.Dispatch<
     React.SetStateAction<{
       page: number;
-      pageSize: number;
+      show: number;
       shortBy: string;
     }>
   >;
@@ -37,6 +38,18 @@ interface FilterProps {
 }
 
 export function Filter({ metaData, filters, setFilters }: FilterProps) {
+  const [selectedValue, setSelectedValue] = useState({
+    shortBy: "default",
+    show: 16,
+  });
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = event.target;
+    setSelectedValue({ ...selectedValue, [name]: value });
+
+    setFilters({ ...filters, [name]: value });
+  };
+
   return (
     <FilterSection className="container">
       <FilterContent>
@@ -58,24 +71,32 @@ export function Filter({ metaData, filters, setFilters }: FilterProps) {
         <FilterInputs>
           <FilterLabel htmlFor="show">
             Show
-            <ShowInput
+            <ShowSelect
+              name="show"
               id="show"
-              type="text"
-              value={filters.pageSize.toString()}
-              onChange={(e) =>
-                setFilters({ ...filters, pageSize: Number(e.target.value) })
-              }
-              placeholder={filters.pageSize.toString()}
-            />
+              value={selectedValue.show}
+              onChange={handleSelectChange}
+            >
+              <option value="4">4</option>
+              <option value="8">8</option>
+              <option value="16">16</option>
+              <option value="32">32</option>
+              <option value="64">64</option>
+            </ShowSelect>
           </FilterLabel>
 
           <FilterLabel htmlFor="shortBy">
             Short by
-            <ShortByInput
+            <ShortBySelect
+              name="shortBy"
               id="shortBy"
-              type="text"
-              placeholder={filters.shortBy}
-            />
+              value={selectedValue.shortBy}
+              onChange={handleSelectChange}
+            >
+              <option value="default">Default</option>
+              <option value="asc">Menor preço</option>
+              <option value="desc">Maior preço</option>
+            </ShortBySelect>
           </FilterLabel>
         </FilterInputs>
       </FilterContent>

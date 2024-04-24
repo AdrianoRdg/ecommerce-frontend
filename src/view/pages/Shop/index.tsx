@@ -25,8 +25,8 @@ export function Shop() {
   });
   const [filters, setFilters] = useState({
     page: 1,
-    pageSize: 16,
-    shortBy: "Default",
+    show: 16,
+    shortBy: "default",
   });
   const [loading, setLoading] = useState(true);
 
@@ -49,7 +49,9 @@ export function Shop() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          `http://localhost:3001/product?page=${filters.page}&pageSize=${filters.pageSize}`
+          `http://localhost:3001/product?page=${filters.page}&pageSize=${
+            filters.show
+          }&orderBy=${filters.shortBy === "Default" ? "" : filters.shortBy}`
         );
 
         const { data, meta } = response.data;
@@ -58,12 +60,12 @@ export function Shop() {
         setCards(data);
         setLoading(false);
       } catch (error) {
-        console.error("Erro ao fazer requisição:", error);
+        console.error("Request Error:", error);
       }
     }
 
     fetchData();
-  }, [filters.page, filters.pageSize]);
+  }, [filters.page, filters.show, filters.shortBy]);
   return (
     <>
       <Header />
@@ -93,6 +95,7 @@ export function Shop() {
               ))}
           </CardsContainer>
         </CardsSection>
+
         <PaginationContainer>
           {Array.from({ length: responseMeta.totalPages }, (_, index) => (
             <PaginationButton
@@ -102,7 +105,9 @@ export function Shop() {
                 setFilters((old) => ({ ...old, page: index + 1 }));
                 scrollToTop();
               }}
-            >{`${index + 1}`}</PaginationButton>
+            >
+              {`${index + 1}`}
+            </PaginationButton>
           ))}
           <PaginationButton onClick={handleNextPage}>Next</PaginationButton>
         </PaginationContainer>
