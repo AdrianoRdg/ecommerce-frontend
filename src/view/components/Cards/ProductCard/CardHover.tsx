@@ -19,7 +19,7 @@ export function CardHover({ id }: CardHoverProps) {
   return (
     <ProductCardHover>
       <HoverContent>
-        <NavLink to={`${id}`}>
+        <NavLink to={`/product/${id}`}>
           <HoverButton>See Details</HoverButton>
         </NavLink>
 

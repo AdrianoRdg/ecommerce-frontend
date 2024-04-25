@@ -84,7 +84,7 @@ export function Shop() {
                 <ProductCard
                   key={card.id}
                   id={card.id}
-                  image={card.imageLink}
+                  imageLink={card.imageLink}
                   name={card.name}
                   description={card.description}
                   price={card.price}

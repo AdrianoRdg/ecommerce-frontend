@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GlobalStyles from "./assets/styles/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 import { Home } from "./view/pages/Home";
+import { ProductDetail } from "./view/pages/ProductDetail";
 import { Shop } from "./view/pages/Shop";
 
 const router = createBrowserRouter([
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     element: <Shop />,
   },
   {
-    path: "/shop/:id",
-    element: <h1>Detail</h1>,
+    path: "/product/:id",
+    element: <ProductDetail />,
   },
   {
     path: "*",

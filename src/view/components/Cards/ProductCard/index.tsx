@@ -11,7 +11,7 @@ import {
 
 interface ProductCardProps {
   id: number;
-  image: string;
+  imageLink: string;
   name: string;
   description: string;
   price: number;
@@ -22,7 +22,7 @@ interface ProductCardProps {
 
 export function ProductCard({
   id,
-  image,
+  imageLink,
   name,
   description,
   price,
@@ -70,7 +70,7 @@ export function ProductCard({
       )}
 
       <ImageContainer>
-        <img src={image} alt="" />
+        <img src={imageLink} alt="" />
       </ImageContainer>
 
       <InfoContainer>
