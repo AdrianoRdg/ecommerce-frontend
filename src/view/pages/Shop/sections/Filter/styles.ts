@@ -31,10 +31,6 @@ export const Filters = styled.div`
   }
 `;
 
-export const Pipe = styled.span`
-  padding: 0 0.5rem;
-`;
-
 export const FilterInputs = styled.div`
   display: flex;
   gap: 1.5rem;

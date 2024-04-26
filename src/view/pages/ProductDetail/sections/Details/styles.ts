@@ -7,17 +7,18 @@ export const DetailsContainer = styled.section`
 `;
 
 export const ProductContent = styled.div`
-  width: 1241.01px;
-  border: 1px solid red;
+  width: 77.5631rem;
   display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
 `;
 
 export const ProductImages = styled.div`
+  width: 553px;
+  height: 500px;
   border: 1px solid black;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 2rem;
 `;
 
 export const MainImage = styled.img`
@@ -27,9 +28,16 @@ export const MainImage = styled.img`
   border-radius: 10px;
 `;
 
+export const OtherImages = styled.div`
+  width: 76px;
+  height: 416px;
+  border: 1px solid purple;
+`;
+
 export const ProductInfo = styled.div`
   border: 1px solid black;
-  width: 100%;
+  width: 37.8756rem;
+  /* height: 730px; */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -46,6 +54,8 @@ export const ProductPrice = styled.h3`
   color: #9f9f9f;
 `;
 
+export const Ratings = styled.div``;
+
 export const ProductDescription = styled.p`
   width: 26.5rem;
   font-size: 13px;
@@ -57,9 +67,50 @@ export const Style = styled.div`
   height: 3.9375rem;
 `;
 
+const StyledOption = styled.div`
+  width: 123px;
+  height: 63px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9f9f9f;
+  }
+
+  button {
+    border: none;
+  }
+
+  div {
+    display: flex;
+    gap: 0.7rem;
+  }
+`;
+
+export const SizeOptions = styled(StyledOption)`
+  button {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+  }
+`;
+
+export const ColorOptions = styled(StyledOption)``;
+
+export const ColorOption = styled.div<{ $color: string }>`
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: ${(props) => props.$color};
+`;
+
 export const ActionButtons = styled.div`
   display: flex;
   gap: 1rem;
+  padding-bottom: 0.5rem;
 `;
 
 export const Counter = styled.div`
@@ -96,4 +147,35 @@ export const AddToCartButton = styled(StyledButton)`
 
 export const CompareButton = styled(StyledButton)`
   width: 13.4375rem;
+`;
+
+export const ExtraInfo = styled.ul`
+  color: #9f9f9f;
+  list-style: none;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Key = styled.span`
+  flex: 1;
+  max-width: 5rem;
+  text-align: left;
+  padding-right: 10px;
+`;
+
+export const Separator = styled.span`
+  flex: 0 0 auto;
+`;
+
+export const Value = styled.span`
+  flex: 1;
+  text-align: left;
+  padding-left: 10px;
 `;
