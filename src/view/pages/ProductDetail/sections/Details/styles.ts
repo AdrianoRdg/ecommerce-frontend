@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const DetailsContainer = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -16,7 +17,6 @@ export const ProductContent = styled.div`
 export const ProductImages = styled.div`
   width: 553px;
   height: 500px;
-  border: 1px solid black;
   display: flex;
   gap: 2rem;
 `;
@@ -24,20 +24,25 @@ export const ProductImages = styled.div`
 export const MainImage = styled.img`
   width: 26.4375rem;
   height: 31.25rem;
-  /* object-fit: cover; */
   border-radius: 10px;
 `;
 
 export const OtherImages = styled.div`
-  width: 76px;
-  height: 416px;
-  border: 1px solid purple;
+  width: 4.75rem;
+  height: 26rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const SecondaryImage = styled.img`
+  width: 4.75rem;
+  height: 5rem;
+  border-radius: 10px;
 `;
 
 export const ProductInfo = styled.div`
-  border: 1px solid black;
   width: 37.8756rem;
-  /* height: 730px; */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -54,7 +59,12 @@ export const ProductPrice = styled.h3`
   color: #9f9f9f;
 `;
 
-export const Ratings = styled.div``;
+export const Ratings = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9f9f9f;
+`;
 
 export const ProductDescription = styled.p`
   width: 26.5rem;
@@ -178,4 +188,41 @@ export const Value = styled.span`
   flex: 1;
   text-align: left;
   padding-left: 10px;
+`;
+
+export const DescriptionContainer = styled.div`
+  border-top: 1px solid #9f9f9f;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+`;
+
+export const InformationChoice = styled.div`
+  width: 28.625rem;
+  display: flex;
+  justify-content: space-between;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  h2:nth-child(2) {
+    color: #9f9f9f;
+    font-weight: 400;
+  }
+`;
+
+export const DescriptionContent = styled.div`
+  max-width: 64.125rem;
+  text-align: justify;
+  color: #9f9f9f;
+
+  p {
+    margin-top: 1.5rem;
+  }
 `;
