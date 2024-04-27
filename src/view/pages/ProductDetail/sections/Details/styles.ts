@@ -27,18 +27,23 @@ export const MainImage = styled.img`
   border-radius: 10px;
 `;
 
-export const OtherImages = styled.div`
+export const SideImages = styled.div`
   width: 4.75rem;
-  height: 26rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
 `;
 
 export const SecondaryImage = styled.img`
   width: 4.75rem;
   height: 5rem;
   border-radius: 10px;
+  background-color: #faf3ea;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 `;
 
 export const ProductInfo = styled.div`
@@ -149,6 +154,13 @@ const StyledButton = styled.button`
   font-size: 20px;
   font-weight: 400;
   background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    font-weight: 500;
+  }
 `;
 
 export const AddToCartButton = styled(StyledButton)`

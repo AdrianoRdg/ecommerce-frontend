@@ -1,8 +1,10 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product } from "../../../interfaces/Product";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { Loading } from "../../components/Loading";
 import { Breadcrumb } from "./sections/Breadcrumb";
 import { Details } from "./sections/Details";
 import { RelatedProducts } from "./sections/RelatedProducts";
@@ -10,14 +12,21 @@ import { RelatedProducts } from "./sections/RelatedProducts";
 export function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState<Product>();
+  const [loading, setLoading] = useState(true);
+  console.log(loading);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:3001/product/${id}`);
-      const data = await response.json();
-      console.log(data);
+      try {
+        setLoading(true);
+        const response = await axios(`http://localhost:3001/product/${id}`);
+        const { data } = response;
 
-      setProduct(data);
+        setProduct(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Request Error:", error);
+      }
     }
 
     fetchData();
@@ -27,8 +36,17 @@ export function ProductDetail() {
     <>
       <Header />
       <Breadcrumb productName={product ? product.name : ""} />
-      {product && <Details {...product} />}
-      <RelatedProducts />
+      {loading ? (
+        <Loading />
+      ) : (
+        product && (
+          <>
+            <Details {...product} />
+            <RelatedProducts categoryId={product.category.id} />
+          </>
+        )
+      )}
+
       <Footer />
     </>
   );

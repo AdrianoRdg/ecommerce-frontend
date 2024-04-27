@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Product } from "../../../../../interfaces/Product";
 import {
   ActionButtons,
@@ -15,7 +15,6 @@ import {
   Key,
   ListItem,
   MainImage,
-  OtherImages,
   ProductContent,
   ProductDescription,
   ProductImages,
@@ -25,6 +24,7 @@ import {
   Ratings,
   SecondaryImage,
   Separator,
+  SideImages,
   SizeOptions,
   Value,
 } from "./styles";
@@ -40,27 +40,55 @@ export function Details({
   price,
   sku,
   category,
+  otherImagesLink,
+  largeDescription,
 }: Product) {
   const [quantity, setQuantity] = useState(1);
+  const [currentImage, setCurrentImage] = useState(imageLink);
+  const [images, setImages] = useState<string[]>([]);
+  // const images = otherImagesLink.split(",");
+
+  function formatNumber(number: number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  useEffect(() => {
+    const updateImages = () => {
+      const newImages = otherImagesLink.split(",");
+      setImages(newImages);
+    };
+
+    updateImages();
+  }, [otherImagesLink]);
 
   return (
     <DetailsContainer className="container">
       <ProductContent>
         <ProductImages>
-          <OtherImages>
-            <SecondaryImage src={imageLink} alt="" />
-            <SecondaryImage src={imageLink} alt="" />
-            <SecondaryImage src={imageLink} alt="" />
-            <SecondaryImage src={imageLink} alt="" />
-          </OtherImages>
+          <SideImages>
+            <SecondaryImage
+              src={imageLink}
+              alt=""
+              onClick={() => setCurrentImage(imageLink)}
+            />
 
-          <MainImage src={imageLink} alt="" />
+            {images.map((image, index) => (
+              <SecondaryImage
+                key={index}
+                src={image}
+                alt=""
+                onClick={() => setCurrentImage(image)}
+              />
+            ))}
+          </SideImages>
+
+          <MainImage src={currentImage} alt="" />
         </ProductImages>
 
         <ProductInfo>
           <div>
             <ProductName>{name}</ProductName>
-            <ProductPrice>{`Rs. ${price}`}</ProductPrice>
+            <ProductPrice>{`Rs. ${formatNumber(price)}`}</ProductPrice>
           </div>
 
           <Ratings>
@@ -142,7 +170,7 @@ export function Details({
         </InformationChoice>
 
         <DescriptionContent>
-          <p>
+          {/* <p>
             Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn
             portable active stereo speaker takes the unmistakable look and sound
             of Marshall, unplugs the chords, and takes the show on the road.
@@ -156,7 +184,9 @@ export function Details({
             The analogue knobs allow you to fine tune the controls to your
             personal preferences while the guitar-influenced leather strap
             enables easy and stylish travel.
-          </p>
+          </p> */}
+
+          <p>{largeDescription}</p>
         </DescriptionContent>
       </DescriptionContainer>
     </DetailsContainer>

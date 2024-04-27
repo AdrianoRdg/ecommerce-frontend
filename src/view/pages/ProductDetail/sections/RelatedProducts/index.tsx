@@ -5,17 +5,25 @@ import { ShowMoreButton } from "../../../../components/Buttons/ShowMore";
 import { ProductCard } from "../../../../components/Cards/ProductCard";
 import { RelatedProductsContainer, RelatedProductsContent } from "./styles";
 
-export function RelatedProducts() {
+interface RelatedProductsProps {
+  categoryId: number;
+}
+
+export function RelatedProducts({ categoryId }: RelatedProductsProps) {
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [canNavigate, setCanNavigate] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       try {
+        if (page === 2) setCanNavigate(true);
+
         const response = await axios.get(
-          `http://localhost:3001/product?page=1&pageSize=4`
+          `http://localhost:3001/product/category/${categoryId}?page=${page}&pageSize=4`
         );
 
-        const { data } = response.data;
-
+        const { data } = response;
         setProducts(data);
       } catch (error) {
         console.error("Request Error:", error);
@@ -23,7 +31,7 @@ export function RelatedProducts() {
     }
 
     fetchData();
-  });
+  }, [categoryId, page]);
 
   return (
     <RelatedProductsContainer className="container">
@@ -36,7 +44,9 @@ export function RelatedProducts() {
           ))}
       </RelatedProductsContent>
 
-      <ShowMoreButton />
+      <div onClick={() => setPage((oldPage) => oldPage + 1)}>
+        <ShowMoreButton canNavigate={canNavigate} />
+      </div>
     </RelatedProductsContainer>
   );
 }
