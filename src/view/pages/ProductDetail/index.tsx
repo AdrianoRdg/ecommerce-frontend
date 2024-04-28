@@ -13,7 +13,6 @@ export function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState(true);
-  console.log(loading);
 
   useEffect(() => {
     async function fetchData() {

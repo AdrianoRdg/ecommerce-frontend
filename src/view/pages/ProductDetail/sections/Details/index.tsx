@@ -33,6 +33,10 @@ import ratingStars from "../../../../../assets/images/productDetails/stars.svg";
 import { DivisionLine } from "../../../../components/Lines/DivisionLine";
 import { Pipe } from "../../../../components/Lines/Pipe";
 
+import facebook from "../../../../../assets/images/productDetails/facebook.svg";
+import linkedin from "../../../../../assets/images/productDetails/linkedin.svg";
+import twitter from "../../../../../assets/images/productDetails/twitter.svg";
+
 export function Details({
   name,
   description,
@@ -46,7 +50,6 @@ export function Details({
   const [quantity, setQuantity] = useState(1);
   const [currentImage, setCurrentImage] = useState(imageLink);
   const [images, setImages] = useState<string[]>([]);
-  // const images = otherImagesLink.split(",");
 
   function formatNumber(number: number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -157,7 +160,11 @@ export function Details({
             <ListItem>
               <Key>Share</Key>
               <Separator>:</Separator>
-              <Value>Share</Value>
+              <Value>
+                <img src={facebook} alt="" />
+                <img src={twitter} alt="" />
+                <img src={linkedin} alt="" />
+              </Value>
             </ListItem>
           </ExtraInfo>
         </ProductInfo>
@@ -170,22 +177,6 @@ export function Details({
         </InformationChoice>
 
         <DescriptionContent>
-          {/* <p>
-            Embodying the raw, wayward spirit of rock ‘n’ roll, the Kilburn
-            portable active stereo speaker takes the unmistakable look and sound
-            of Marshall, unplugs the chords, and takes the show on the road.
-          </p>
-          <p>
-            Weighing in under 7 pounds, the Kilburn is a lightweight piece of
-            vintage styled engineering. Setting the bar as one of the loudest
-            speakers in its class, the Kilburn is a compact, stout-hearted hero
-            with a well-balanced audio which boasts a clear midrange and
-            extended highs for a sound that is both articulate and pronounced.
-            The analogue knobs allow you to fine tune the controls to your
-            personal preferences while the guitar-influenced leather strap
-            enables easy and stylish travel.
-          </p> */}
-
           <p>{largeDescription}</p>
         </DescriptionContent>
       </DescriptionContainer>

@@ -197,9 +197,15 @@ export const Separator = styled.span`
 `;
 
 export const Value = styled.span`
+  display: flex;
   flex: 1;
   text-align: left;
   padding-left: 10px;
+
+  img {
+    width: 20px;
+    margin-right: 0.5rem;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
