@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Product } from "../../../../../interfaces/Product";
+import { ShowMoreButton } from "../../../../components/Buttons/ShowMore";
 import { ProductCard } from "../../../../components/Cards/ProductCard";
-import { ProductsContainer, ProductsContent, ShowMoreButton } from "./styles";
+import { ProductsContainer, ProductsContent } from "./styles";
 
 export function Products() {
   const [cards, setCards] = useState([]);
@@ -28,13 +28,6 @@ export function Products() {
     fetchData();
   }, []);
 
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
   return (
     <ProductsContainer className="container">
       <h1>Our Products</h1>
@@ -45,7 +38,7 @@ export function Products() {
             <ProductCard
               key={card.id}
               id={card.id}
-              image={card.imageLink}
+              imageLink={card.imageLink}
               name={card.name}
               description={card.description}
               price={card.price}
@@ -56,9 +49,7 @@ export function Products() {
           ))}
       </ProductsContent>
 
-      <NavLink to="/shop" onClick={scrollToTop}>
-        <ShowMoreButton>Show More</ShowMoreButton>
-      </NavLink>
+      <ShowMoreButton />
     </ProductsContainer>
   );
 }

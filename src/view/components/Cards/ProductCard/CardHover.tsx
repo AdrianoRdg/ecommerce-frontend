@@ -16,11 +16,18 @@ interface CardHoverProps {
 }
 
 export function CardHover({ id }: CardHoverProps) {
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <ProductCardHover>
       <HoverContent>
-        <NavLink to={`${id}`}>
-          <HoverButton>See Details</HoverButton>
+        <NavLink to={`/product/${id}`}>
+          <HoverButton onClick={scrollToTop}>See Details</HoverButton>
         </NavLink>
 
         <HoverActions>

@@ -5,7 +5,6 @@ import {
   FilterOptions,
   FilterSection,
   Filters,
-  Pipe,
   ShortBySelect,
   ShowSelect,
 } from "./styles";
@@ -13,8 +12,8 @@ import {
 import { ChangeEvent, useState } from "react";
 import dots from "../../../../../assets/images/filter/dots.svg";
 import filter from "../../../../../assets/images/filter/filter.svg";
-import pipe from "../../../../../assets/images/filter/pipe.svg";
 import squares from "../../../../../assets/images/filter/squares.svg";
+import { Pipe } from "../../../../components/Lines/Pipe";
 
 interface FilterProps {
   filters: {
@@ -62,9 +61,8 @@ export function Filter({ metaData, filters, setFilters }: FilterProps) {
           <img src={dots} alt="dots icon" />
           <img src={squares} alt="squares icon" />
 
-          <Pipe>
-            <img src={pipe} alt="pipe icon" />
-          </Pipe>
+          <Pipe />
+
           <p>{`Showing ${metaData.page}-${metaData.pageSize} of ${metaData.totalCount} results`}</p>
         </FilterOptions>
 

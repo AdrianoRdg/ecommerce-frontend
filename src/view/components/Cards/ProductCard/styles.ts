@@ -17,7 +17,7 @@ export const InfoContainer = styled.div`
   background-color: #f4f5f7;
   display: flex;
   flex-direction: column;
-  padding: 1.4rem;
+  padding: 1.2rem;
 `;
 
 export const InfoTitle = styled.div`
