@@ -1,21 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../../../interfaces/Product";
 import { scrollToTop } from "../../../utils/scrollUtils";
 import { Benefits } from "../../components/Benefits";
-import { ProductCard } from "../../components/Cards/ProductCard";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { Loading } from "../../components/Loading";
+import { ProductsGrid } from "../../components/ProductsGrid";
 import { Filter } from "./sections/Filter";
 import { ShopHero } from "./sections/ShopHero";
-import {
-  CardsContainer,
-  CardsSection,
-  PaginationButton,
-  PaginationContainer,
-  ShopContainer,
-} from "./styles";
+import { PaginationButton, PaginationContainer, ShopContainer } from "./styles";
 
 export function Shop() {
   const [cards, setCards] = useState([]);
@@ -90,24 +84,7 @@ export function Shop() {
       />
 
       <ShopContainer className="container">
-        <CardsSection>
-          <CardsContainer>
-            {!loading &&
-              cards.map((card: Product) => (
-                <ProductCard
-                  key={card.id}
-                  id={card.id}
-                  imageLink={card.imageLink}
-                  name={card.name}
-                  description={card.description}
-                  price={card.price}
-                  discountPrice={card.discountPrice}
-                  discountPercent={card.discountPercent}
-                  isNew={card.isNew}
-                />
-              ))}
-          </CardsContainer>
-        </CardsSection>
+        {loading ? <Loading /> : <ProductsGrid products={cards} />}
 
         <PaginationContainer>
           {Array.from({ length: responseMeta.totalPages }, (_, index) => (

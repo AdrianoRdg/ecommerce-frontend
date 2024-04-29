@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Category } from "../../../../../interfaces/Category";
-import { Product } from "../../../../../interfaces/Product";
 import { ShowMoreButton } from "../../../../components/Buttons/ShowMore";
-import { ProductCard } from "../../../../components/Cards/ProductCard";
-import { RelatedProductsContainer, RelatedProductsContent } from "./styles";
+import { ProductsGrid } from "../../../../components/ProductsGrid";
+import { RelatedProductsContainer } from "./styles";
 
 export function RelatedProducts({ name, id }: Category) {
   const [products, setProducts] = useState([]);
@@ -35,12 +34,7 @@ export function RelatedProducts({ name, id }: Category) {
     <RelatedProductsContainer className="container">
       <h2>Related Products</h2>
 
-      <RelatedProductsContent>
-        {products &&
-          products.map((product: Product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-      </RelatedProductsContent>
+      <ProductsGrid products={products} />
 
       <div onClick={() => setPage((oldPage) => oldPage + 1)}>
         <ShowMoreButton

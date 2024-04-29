@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Product } from "../../../../../interfaces/Product";
 import { ShowMoreButton } from "../../../../components/Buttons/ShowMore";
-import { ProductCard } from "../../../../components/Cards/ProductCard";
-import { ProductsContainer, ProductsContent } from "./styles";
+import { Loading } from "../../../../components/Loading";
+import { ProductsGrid } from "../../../../components/ProductsGrid";
+import { ProductsContainer } from "./styles";
 
 export function Products() {
   const [cards, setCards] = useState([]);
@@ -32,22 +32,7 @@ export function Products() {
     <ProductsContainer className="container">
       <h1>Our Products</h1>
 
-      <ProductsContent>
-        {!loading &&
-          cards.map((card: Product) => (
-            <ProductCard
-              key={card.id}
-              id={card.id}
-              imageLink={card.imageLink}
-              name={card.name}
-              description={card.description}
-              price={card.price}
-              discountPrice={card.discountPrice}
-              discountPercent={card.discountPercent}
-              isNew={card.isNew}
-            />
-          ))}
-      </ProductsContent>
+      {loading ? <Loading /> : <ProductsGrid products={cards} />}
 
       <ShowMoreButton />
     </ProductsContainer>
