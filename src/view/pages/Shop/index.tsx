@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Product } from "../../../interfaces/Product";
+import { scrollToTop } from "../../../utils/scrollUtils";
 import { Benefits } from "../../components/Benefits";
 import { ProductCard } from "../../components/Cards/ProductCard";
 import { Footer } from "../../components/Footer";
@@ -29,18 +31,12 @@ export function Shop() {
     shortBy: "default",
   });
   const [loading, setLoading] = useState(true);
-
-  function scrollToTop() {
-    window.scrollTo({
-      top: 300,
-      behavior: "smooth",
-    });
-  }
+  const param = useParams();
 
   function handleNextPage() {
     setFilters((old) => {
       if (old.page === responseMeta.totalPages) return old;
-      scrollToTop();
+      scrollToTop(300);
       return { ...old, page: old.page + 1 };
     });
   }
@@ -48,6 +44,23 @@ export function Shop() {
   useEffect(() => {
     async function fetchData() {
       try {
+        if (param.category) {
+          const response = await axios.get(
+            `http://localhost:3001/product/category/${param.category}?page=${
+              filters.page
+            }&pageSize=${filters.show}&orderBy=${
+              filters.shortBy === "Default" ? "" : filters.shortBy
+            }`
+          );
+
+          const { data, meta } = response.data;
+          console.log(meta);
+          setResponseMeta(meta);
+          setCards(data);
+          setLoading(false);
+          return;
+        }
+
         const response = await axios.get(
           `http://localhost:3001/product?page=${filters.page}&pageSize=${
             filters.show
@@ -65,7 +78,7 @@ export function Shop() {
     }
 
     fetchData();
-  }, [filters.page, filters.show, filters.shortBy]);
+  }, [filters.page, filters.show, filters.shortBy, param.category]);
   return (
     <>
       <Header />

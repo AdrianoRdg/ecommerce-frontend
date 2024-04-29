@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../../../assets/styles/mediaQueries";
 
 export const CardContainer = styled.div`
   width: 23.8125rem;
@@ -11,11 +12,8 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  img {
-    height: 30rem;
     border-radius: 10px;
+    overflow: hidden;
   }
 
   h3 {
@@ -24,7 +22,34 @@ export const CardContainer = styled.div`
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.1);
     cursor: pointer;
+  }
+
+  @media ${devices.xl} {
+    width: 19rem;
+  }
+
+  @media ${devices.xmd} {
+    width: 17rem;
+  }
+`;
+
+export const ImageContainer = styled.div`
+  height: 29rem;
+  border-radius: 10px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  @media ${devices.xl} {
+    height: 22rem;
+  }
+
+  @media ${devices.xmd} {
+    height: 22rem;
   }
 `;

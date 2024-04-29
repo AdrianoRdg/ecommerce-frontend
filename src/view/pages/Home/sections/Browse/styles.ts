@@ -17,4 +17,10 @@ export const BrowseCards = styled.div`
   justify-content: space-between;
   max-width: 73.9375rem;
   gap: 1.4rem;
+
+  @media (max-width: 880px) {
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;

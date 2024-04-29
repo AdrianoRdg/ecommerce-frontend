@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { CardContainer } from "./styles";
+import { NavLink } from "react-router-dom";
+import { CardContainer, ImageContainer } from "./styles";
 
 interface BrowseCardProps {
   name: string;
@@ -9,10 +9,12 @@ interface BrowseCardProps {
 export function BrowseCard({ name, imageLink }: BrowseCardProps) {
   return (
     <CardContainer>
-      <Link to={`category/${name.toLowerCase()}`}>
-        <img src={imageLink} alt={`${name} card`} draggable="false" />
+      <NavLink to={`/shop/${name.toLowerCase()}`}>
+        <ImageContainer>
+          <img src={imageLink} alt={`${name} card`} draggable="false" />
+        </ImageContainer>
         <h3>{name}</h3>
-      </Link>
+      </NavLink>
     </CardContainer>
   );
 }

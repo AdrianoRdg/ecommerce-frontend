@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
+import { scrollToTop } from "../../../../utils/scrollUtils";
 import { StyledButton } from "./styles";
 
-export function ShowMoreButton({ canNavigate = true }) {
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+interface ShowMoreButtonProps {
+  canNavigate?: boolean;
+  route?: string;
+}
 
+export function ShowMoreButton({
+  canNavigate = true,
+  route,
+}: ShowMoreButtonProps) {
   function handleClick(e: React.MouseEvent) {
     if (!canNavigate) {
       e.preventDefault();
@@ -19,7 +21,7 @@ export function ShowMoreButton({ canNavigate = true }) {
   }
 
   return (
-    <NavLink to="/shop" onClick={handleClick}>
+    <NavLink to={route ? route : "/shop"} onClick={handleClick}>
       <StyledButton>Show More</StyledButton>
     </NavLink>
   );

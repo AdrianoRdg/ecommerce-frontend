@@ -41,7 +41,7 @@ export function ProductDetail() {
         product && (
           <>
             <Details {...product} />
-            <RelatedProducts categoryId={product.category.id} />
+            <RelatedProducts {...product.category} />
           </>
         )
       )}
