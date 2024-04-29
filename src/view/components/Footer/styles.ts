@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../../assets/styles/mediaQueries";
 
 export const FooterContainer = styled.footer`
   height: 31.5625rem;
@@ -8,7 +9,8 @@ export const FooterContainer = styled.footer`
 `;
 
 export const FooterContent = styled.div`
-  width: 77.25rem;
+  max-width: 77.5006rem;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,6 +25,16 @@ export const FooterInfo = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2.5rem 0;
+
+  @media ${devices.xl} {
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 1240px) {
+    padding: 2.5rem 2rem;
+    gap: 2rem;
+    justify-content: flex-start;
+  }
 `;
 
 export const BrandInfo = styled.div`
@@ -79,4 +91,8 @@ export const Copyright = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  @media (max-width: 1240px) {
+    padding: 0 2rem;
+  }
 `;
