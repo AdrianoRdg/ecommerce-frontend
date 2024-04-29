@@ -1,14 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { scrollToTop } from "../../../../utils/scrollUtils";
 import { StyledButton } from "./styles";
 
 export function ShowMoreButton({ canNavigate = true }) {
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
   function handleClick(e: React.MouseEvent) {
     if (!canNavigate) {
       e.preventDefault();

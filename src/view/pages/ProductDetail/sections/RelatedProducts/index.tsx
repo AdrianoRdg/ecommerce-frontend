@@ -20,8 +20,9 @@ export function RelatedProducts({ categoryId }: RelatedProductsProps) {
         if (page === 2) setCanNavigate(true);
 
         const response = await axios.get(
-          `http://localhost:3001/product/category/${categoryId}?page=${page}&pageSize=4`
+          `http://localhost:3001/product/category-by-id/${categoryId}?page=${page}&pageSize=4`
         );
+        console.log(response);
 
         const { data } = response;
         setProducts(data);

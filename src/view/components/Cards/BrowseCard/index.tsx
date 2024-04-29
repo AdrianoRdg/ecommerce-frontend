@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { CardContainer } from "./styles";
 
 interface BrowseCardProps {
@@ -9,10 +9,10 @@ interface BrowseCardProps {
 export function BrowseCard({ name, imageLink }: BrowseCardProps) {
   return (
     <CardContainer>
-      <Link to={`category/${name.toLowerCase()}`}>
+      <NavLink to={`/shop/${name.toLowerCase()}`}>
         <img src={imageLink} alt={`${name} card`} draggable="false" />
         <h3>{name}</h3>
-      </Link>
+      </NavLink>
     </CardContainer>
   );
 }
