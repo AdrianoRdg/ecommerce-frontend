@@ -14,6 +14,7 @@ import dots from "../../../../../assets/images/filter/dots.svg";
 import filter from "../../../../../assets/images/filter/filter.svg";
 import squares from "../../../../../assets/images/filter/squares.svg";
 import { Pipe } from "../../../../components/Lines/Pipe";
+import { FiltersMenu } from "./FiltersMenu";
 
 interface FilterProps {
   filters: {
@@ -42,6 +43,8 @@ export function Filter({ metaData, filters, setFilters }: FilterProps) {
     show: 16,
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target;
     setSelectedValue({ ...selectedValue, [name]: value });
@@ -53,7 +56,7 @@ export function Filter({ metaData, filters, setFilters }: FilterProps) {
     <FilterSection className="container">
       <FilterContent>
         <FilterOptions>
-          <Filters>
+          <Filters onClick={() => setIsOpen(!isOpen)}>
             <img src={filter} alt="filter icon" />
             <p>Filter</p>
           </Filters>
@@ -98,6 +101,8 @@ export function Filter({ metaData, filters, setFilters }: FilterProps) {
           </FilterLabel>
         </FilterInputs>
       </FilterContent>
+
+      <FiltersMenu isOpen={isOpen} />
     </FilterSection>
   );
 }
