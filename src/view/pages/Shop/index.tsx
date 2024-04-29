@@ -48,7 +48,7 @@ export function Shop() {
           );
 
           const { data, meta } = response.data;
-          console.log(meta);
+
           setResponseMeta(meta);
           setCards(data);
           setLoading(false);

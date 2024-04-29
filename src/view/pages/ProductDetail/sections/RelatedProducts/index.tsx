@@ -18,7 +18,6 @@ export function RelatedProducts({ name, id }: Category) {
         const response = await axios.get(
           `http://localhost:3001/product/category-by-id/${id}?page=${page}&pageSize=4`
         );
-        console.log(response);
 
         const { data } = response;
         setProducts(data);
